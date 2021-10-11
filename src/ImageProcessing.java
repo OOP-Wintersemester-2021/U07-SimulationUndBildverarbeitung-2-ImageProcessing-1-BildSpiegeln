@@ -49,8 +49,23 @@ public class ImageProcessing extends GraphicsApp {
     }
 
     private Image flipImageHorizontal(Image img) {
-        // Code zur Spiegelung des Bildes hier ergänzen
+        int[][] pixels = img.getPixelArray();
+
+        int numLineTotal = pixels.length;
+        for (int lineNum = 0; lineNum < numLineTotal; lineNum++) {
+            int[] flippedLine = flipLine(pixels[lineNum]);
+            pixels[lineNum] = flippedLine;
+        }
+        img.setPixelArray(pixels);
         return img;
+    }
+
+    private int[] flipLine(int[] imageLine) {
+        int[] flippedLine = new int[imageLine.length];
+        for (int i = 0; i < imageLine.length; i++) {
+            flippedLine[imageLine.length - 1 - i] = imageLine[i];
+        }
+        return flippedLine;
     }
 
     public void onKeyPressed(KeyPressedEvent event) {
