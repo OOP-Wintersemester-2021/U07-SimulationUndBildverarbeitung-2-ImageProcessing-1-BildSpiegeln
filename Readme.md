@@ -12,7 +12,7 @@ aus einem Image-Objekt die Pixel-Daten ausliest und anschließend so
 umdreht, dass das Bild horizontal gespiegelt und dann als neues
 Image-Objekt zurückgegeben wird.
 
-![Sopranos](docs/09_sopranos.png)
+![Sopranos](./docs/09_sopranos.png)
 
 ## Weichzeichnen
 
