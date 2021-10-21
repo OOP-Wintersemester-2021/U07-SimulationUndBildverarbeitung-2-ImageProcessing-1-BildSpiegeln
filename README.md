@@ -20,6 +20,10 @@ Image-Objekt zurückgegeben wird.
 
 ![Bild mit (mehrfachem) Blureffekt](docs/10_the_office_blur.png)
 
+| Bild ohne Blureffekt | Bild mit (mehrfachem) Blureffekt |
+|:------:|:------:|
+| ![Bild ohne Blureffekt](./docs/10_the_office_orig.png) | ![Bild mit (mehrfachem) Blureffekt](./docs/10_the_office_blur.png) |
+
 Erweitern Sie ihr Programm um eine
 weitere Methode ` blurImage``(Image img) `, die ebenfalls durch Tastendruck aufgerufen werden kann.Im Gegensatz zum einfachen Spiegeln reicht es hierbei nicht aus, einzelne Pixel zu vertauschen, sondern Sie müssen auch die umliegenden Pixel miteinbeziehen (kontextabhängige Pixelmanipulation).
 
