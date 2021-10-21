@@ -16,10 +16,6 @@ Image-Objekt zurückgegeben wird.
 
 ## Weichzeichnen
 
-![Bild ohne Blureffekt](docs/10_the_office_orig.png)
-
-![Bild mit (mehrfachem) Blureffekt](docs/10_the_office_blur.png)
-
 | Bild ohne Blureffekt | Bild mit (mehrfachem) Blureffekt |
 |:------:|:------:|
 | ![Bild ohne Blureffekt](./docs/10_the_office_orig.png) | ![Bild mit (mehrfachem) Blureffekt](./docs/10_the_office_blur.png) |
