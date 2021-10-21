@@ -15,8 +15,8 @@ public class ImageProcessing extends GraphicsApp {
     private static final int FRAME_RATE = 60;
     private static final Color BACKGROUND_COLOR = Colors.WHITE;
 
-    private Image sourceImage;
-    private Image workingCopy;
+    private Image sourceImageSopranos;
+    private Image workingCopySopranos;
 
     /*
      * Die initialize-Methode wird einmalig zum Start des Programms
@@ -35,7 +35,7 @@ public class ImageProcessing extends GraphicsApp {
      */
     public void draw() {
         drawBackground(BACKGROUND_COLOR);
-        workingCopy.draw();
+        workingCopySopranos.draw();
     }
 
     private void setupCanvas() {
@@ -44,8 +44,8 @@ public class ImageProcessing extends GraphicsApp {
     }
 
     private void setupImages() {
-        sourceImage = new Image(0, 0, "data/assets/sopranos.jpg");
-        workingCopy = new Image(0, 0, "data/assets/sopranos.jpg");
+        sourceImageSopranos = new Image(0, 0, "data/assets/sopranos.jpg");
+        workingCopySopranos = new Image(0, 0, "data/assets/sopranos.jpg");
     }
 
     private Image flipImageHorizontal(Image img) {
@@ -60,6 +60,71 @@ public class ImageProcessing extends GraphicsApp {
         return img;
     }
 
+    private Image blurImage(Image img) {
+        int[][] sourcePixels = img.getPixelArray();
+        int[][] targetPixels = new int[sourcePixels.length][sourcePixels[0].length];
+
+        for(int y=0; y<sourcePixels.length; y++){
+            for(int x=0; x<sourcePixels[y].length; x++){
+                targetPixels[y][x] = blurPixel(x,y, sourcePixels);
+            }
+        }
+
+        img.setPixelArray(targetPixels);
+
+        return img;
+    }
+
+    private int blurPixel(int x, int y, int[][] sourcePixels) {
+        Color[] colors = new Color[5];
+        // color of pixel
+        colors[0] = getColor(x, y, sourcePixels);
+        // color of pixel to the right
+        colors[1] = getColor(x + 1, y, sourcePixels);
+        // color of pixel at bottom
+        colors[2] = getColor(x, y + 1, sourcePixels);
+        // color of pixel to the left
+        colors[3] = getColor(x - 1, y, sourcePixels);
+        // color of pixel at top
+        colors[4] = getColor(x, y - 1, sourcePixels);
+
+        Color result = mergeColors(colors);
+        return result.toInt();
+    }
+
+    private Color getColor(int x, int y, int[][]sourcePixels){
+        if(y >= 0 && y < sourcePixels.length){
+            if(x >= 0 && x < sourcePixels[y].length){
+                return new Color(sourcePixels[y][x]);
+            }
+        }
+        return null;
+    }
+
+    private Color mergeColors(Color[] colors) {
+        int red = 0;
+        int green = 0;
+        int blue = 0;
+
+        int colorCount = 0;
+
+        for(int i=0; i<colors.length; i++){
+            if(colors[i] != null){
+                red += colors[i].red();
+                green += colors[i].green();
+                blue += colors[i].blue();
+                colorCount++;
+            }
+        }
+        red = red / colorCount;
+        green = green / colorCount;
+        blue = blue / colorCount;
+
+        Color mergedColor = new Color(red, green, blue);
+
+        return mergedColor;
+    }
+
     private int[] flipLine(int[] imageLine) {
         int[] flippedLine = new int[imageLine.length];
         for (int i = 0; i < imageLine.length; i++) {
@@ -69,8 +134,19 @@ public class ImageProcessing extends GraphicsApp {
     }
 
     public void onKeyPressed(KeyPressedEvent event) {
-        workingCopy = flipImageHorizontal(workingCopy);
-        workingCopy.draw();
+        switch (event.getKeyChar())  {
+            case 'f': {
+                workingCopySopranos = flipImageHorizontal(workingCopySopranos);
+                workingCopySopranos.draw();
+            }
+            break;
+
+            case 'b': {
+                workingCopySopranos = blurImage(workingCopySopranos);
+                workingCopySopranos.draw();
+            }
+            break;
+        }
     }
 
     public static void main(String[] args) {
