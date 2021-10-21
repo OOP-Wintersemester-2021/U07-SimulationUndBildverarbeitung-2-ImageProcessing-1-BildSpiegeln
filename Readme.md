@@ -7,7 +7,7 @@ sollen Sie in dieser Aufgabe ein Programm implementieren, dass ein Bild horizont
 
 ## Spiegeln
 
-Schreiben Sie dazu eine Methode ```private Image flipImageHorizontal(Image img) ```, welche
+Schreiben Sie dazu eine Methode ```private Image flipImageHorizontal(Image img)```, welche
 aus einem Image-Objekt die Pixel-Daten ausliest und anschließend so
 umdreht, dass das Bild horizontal gespiegelt und dann als neues
 Image-Objekt zurückgegeben wird.
