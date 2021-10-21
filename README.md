@@ -14,7 +14,7 @@ Image-Objekt zurückgegeben wird.
 
 Gegeben ist folgender Rumpf:
 
-```
+```java
     public class ImageProcessing extends GraphicsApp {
 
         private Image sourceImage;
