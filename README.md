@@ -90,8 +90,6 @@ Gegeben ist folgender Rumpf:
             return img;
         }
         
-        private Image 
-
         public void onKeyPressed(KeyPressedEvent event) {
             workingCopy = flipImageHorizontal(workingCopy);
             workingCopy.draw();
