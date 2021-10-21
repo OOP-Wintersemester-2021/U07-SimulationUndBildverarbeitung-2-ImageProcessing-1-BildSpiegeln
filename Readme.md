@@ -14,6 +14,7 @@ Image-Objekt zurückgegeben wird.
 
 ![Sopranos](./docs/09_sopranos.png)
 
+
 ## Weichzeichnen
 
 | Bild ohne Blureffekt | Bild mit (mehrfachem) Blureffekt |
