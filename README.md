@@ -96,7 +96,3 @@ Gegeben ist folgender Rumpf:
         }
     }
 ```
-
-**Erweiterung:** Implementieren Sie die Methode
-` flipImageVertical``(Image img) `, mit deren Hilfe das Bild vertikal
-gespiegelt wird.
