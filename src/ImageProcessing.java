@@ -9,53 +9,39 @@ import de.ur.mi.oop.launcher.GraphicsAppLauncher;
 
 public class ImageProcessing extends GraphicsApp {
 
-    /* Private Konstanten */
-    private static final int CANVAS_HEIGHT = 800;
-    private static final int CANVAS_WIDTH = 800;
-    private static final int FRAME_RATE = 60;
+    private static final int FRAME_RATE = 1;
     private static final Color BACKGROUND_COLOR = Colors.WHITE;
 
-    private Image sourceImage;
-    private Image workingCopy;
-
-    /*
-     * Die initialize-Methode wird einmalig zum Start des Programms
-     * aufgerufen.
-     */
+    private Image imageSopranos;
 
     @Override
     public void initialize() {
-        setupCanvas();
         setupImages();
+
+        setupCanvas((int) imageSopranos.getWidth(), (int) imageSopranos.getHeight());
     }
 
-    /*
-     * Die draw-Methode wird so lange wiederholt aufgerufen, bis das Programm
-     * beendet wird.
-     */
     public void draw() {
         drawBackground(BACKGROUND_COLOR);
-        workingCopy.draw();
+
+        imageSopranos.draw();
     }
 
-    private void setupCanvas() {
-        setCanvasSize(CANVAS_WIDTH, CANVAS_HEIGHT);
+    private void setupCanvas(int width, int height) {
+        setCanvasSize(width, height);
         setFrameRate(FRAME_RATE);
     }
 
     private void setupImages() {
-        sourceImage = new Image(0, 0, "data/assets/sopranos.jpg");
-        workingCopy = new Image(0, 0, "data/assets/sopranos.jpg");
+        imageSopranos = new Image(0, 0, "data/assets/sopranos.jpg");
     }
 
     private Image flipImageHorizontal(Image img) {
-        // Code zur Spiegelung des Bildes hier ergänzen
         return img;
     }
 
-    public void onKeyPressed(KeyPressedEvent event) {
-        workingCopy = flipImageHorizontal(workingCopy);
-        workingCopy.draw();
+    private Image blurImage(Image img) {
+      return img;
     }
 
     public static void main(String[] args) {
