@@ -1,4 +1,4 @@
-# U21 | Image Processing - Bild spiegeln und weichzeichnen
+# U16 | Image Processing - Bild spiegeln und weichzeichnen
 
 Bildverarbeitung ist ein wichtiges Thema im Design und der
 Computergraphik. Um zu verstehen, wie Programme wie zum Beispiel
