@@ -10,13 +10,10 @@ import de.ur.mi.oop.launcher.GraphicsAppLauncher;
 public class ImageProcessing extends GraphicsApp {
 
     /* Private Konstanten */
-    private static final int CANVAS_HEIGHT = 800;
-    private static final int CANVAS_WIDTH = 800;
-    private static final int FRAME_RATE = 60;
+    private static final int FRAME_RATE = 1;
     private static final Color BACKGROUND_COLOR = Colors.WHITE;
 
-    private Image sourceImageSopranos;
-    private Image workingCopySopranos;
+    private Image imageSopranos;
 
     /*
      * Die initialize-Methode wird einmalig zum Start des Programms
@@ -25,8 +22,9 @@ public class ImageProcessing extends GraphicsApp {
 
     @Override
     public void initialize() {
-        setupCanvas();
         setupImages();
+
+        setupCanvas((int) imageSopranos.getWidth(), (int) imageSopranos.getHeight());
     }
 
     /*
@@ -35,17 +33,20 @@ public class ImageProcessing extends GraphicsApp {
      */
     public void draw() {
         drawBackground(BACKGROUND_COLOR);
-        workingCopySopranos.draw();
+
+        imageSopranos = flipImageHorizontal(imageSopranos);
+        imageSopranos = blurImage(imageSopranos);
+
+        imageSopranos.draw();
     }
 
-    private void setupCanvas() {
-        setCanvasSize(CANVAS_WIDTH, CANVAS_HEIGHT);
+    private void setupCanvas(int width, int height) {
+        setCanvasSize(width, height);
         setFrameRate(FRAME_RATE);
     }
 
     private void setupImages() {
-        sourceImageSopranos = new Image(0, 0, "data/assets/sopranos.jpg");
-        workingCopySopranos = new Image(0, 0, "data/assets/sopranos.jpg");
+        imageSopranos = new Image(0, 0, "data/assets/sopranos.jpg");
     }
 
     private Image flipImageHorizontal(Image img) {
@@ -131,22 +132,6 @@ public class ImageProcessing extends GraphicsApp {
             flippedLine[imageLine.length - 1 - i] = imageLine[i];
         }
         return flippedLine;
-    }
-
-    public void onKeyPressed(KeyPressedEvent event) {
-        switch (event.getKeyChar())  {
-            case 'f': {
-                workingCopySopranos = flipImageHorizontal(workingCopySopranos);
-                workingCopySopranos.draw();
-            }
-            break;
-
-            case 'b': {
-                workingCopySopranos = blurImage(workingCopySopranos);
-                workingCopySopranos.draw();
-            }
-            break;
-        }
     }
 
     public static void main(String[] args) {
