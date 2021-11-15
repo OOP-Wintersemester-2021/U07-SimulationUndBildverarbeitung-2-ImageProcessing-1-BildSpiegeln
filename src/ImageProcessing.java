@@ -13,6 +13,7 @@ public class ImageProcessing extends GraphicsApp {
     private static final Color BACKGROUND_COLOR = Colors.WHITE;
 
     private Image imageSopranos;
+    private Image imageOffice;
 
     @Override
     public void initialize() {
@@ -34,6 +35,7 @@ public class ImageProcessing extends GraphicsApp {
 
     private void setupImages() {
         imageSopranos = new Image(0, 0, "data/assets/sopranos.jpg");
+        imageOffice = new Image(0, 0, "data/assets/the_office_orig.png");
     }
 
     private Image flipImageHorizontal(Image img) {
