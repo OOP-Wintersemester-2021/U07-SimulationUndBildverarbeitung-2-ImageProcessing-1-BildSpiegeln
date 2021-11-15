@@ -10,7 +10,7 @@ sollen Sie in dieser Aufgabe ein Programm implementieren, dass ein Bild horizont
 Schreiben Sie dazu eine Methode ```private Image flipImageHorizontal(Image img)```, welche
 aus einem Image-Objekt die Pixel-Daten ausliest und anschließend so
 umdreht, dass das Bild horizontal gespiegelt und dann als neues
-Image-Objekt zurückgegeben wird.
+Image-Objekt zurückgegeben wird. Das soll einmal pro Frame geschehen.
 
 ![Sopranos](./docs/09_sopranos.png)
 
@@ -22,7 +22,7 @@ Image-Objekt zurückgegeben wird.
 | ![Bild ohne Blureffekt](./docs/10_the_office_orig.png) | ![Bild mit (mehrfachem) Blureffekt](./docs/10_the_office_blur.png) |
 
 Erweitern Sie ihr Programm um eine
-weitere Methode ``` private Image blurImage(Image img)```, die ebenfalls durch Tastendruck aufgerufen werden kann.Im Gegensatz zum einfachen Spiegeln reicht es hierbei nicht aus, einzelne Pixel zu vertauschen, sondern Sie müssen auch die umliegenden Pixel miteinbeziehen (kontextabhängige Pixelmanipulation).
+weitere Methode ``` private Image blurImage(Image img)```. Im Gegensatz zum einfachen Spiegeln reicht es hierbei nicht aus, einzelne Pixel zu vertauschen, sondern Sie müssen auch die umliegenden Pixel miteinbeziehen (kontextabhängige Pixelmanipulation).
 
 Um einen Pixel verschwimmen zu lassen, benötigen Sie die
 Farbinformationen der Pixel darüber, darunter und rechts und links
@@ -39,7 +39,7 @@ Auf diese Weise können Sie die Variablen x und y wie Koordinaten im Bild verwen
 
 Für den Punkt an der Stelle y\|x benötigen Sie also Farbwerte der Punkte um diesen Punkt herum, um dann den Durchschnittswert der Farben zu errechnen und somit das Bild etwas verschwimmen zu lassen.
 
-![Blur-Verfahren](docs/10_blur.png)
+![Blur-Verfahren](./docs/10_blur.png)
 
 Errechnen Sie nun von allen umliegenden Pixeln (siehe oben) und dem
 Pixel selbst aus der entsprechenden Farbe die Durchschnittswerte für
@@ -55,4 +55,4 @@ Beachten Sie dabei, dass überprüft werden muss, ob der entsprechende
 Pixel überhaupt noch im Bild liegt (bei \[0\]\[0\] liegen die Pixel
 links und darüber nicht mehr im Array).
 
-![Blir Verfahren für Ecken eines Bildes](docs/10_blur2.png)
+![Blir Verfahren für Ecken eines Bildes](./docs/10_blur2.png)
