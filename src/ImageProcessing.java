@@ -3,7 +3,6 @@ package ImageProcessing;
 import de.ur.mi.oop.app.GraphicsApp;
 import de.ur.mi.oop.colors.Color;
 import de.ur.mi.oop.colors.Colors;
-import de.ur.mi.oop.events.KeyPressedEvent;
 import de.ur.mi.oop.graphics.Image;
 import de.ur.mi.oop.launcher.GraphicsAppLauncher;
 
@@ -13,7 +12,7 @@ public class ImageProcessing extends GraphicsApp {
     private static final int FRAME_RATE = 1;
     private static final Color BACKGROUND_COLOR = Colors.WHITE;
 
-    private Image imageSopranos;
+    private Image image;
 
     /*
      * Die initialize-Methode wird einmalig zum Start des Programms
@@ -24,7 +23,7 @@ public class ImageProcessing extends GraphicsApp {
     public void initialize() {
         setupImages();
 
-        setupCanvas((int) imageSopranos.getWidth(), (int) imageSopranos.getHeight());
+        setupCanvas((int) image.getWidth(), (int) image.getHeight());
     }
 
     /*
@@ -34,10 +33,10 @@ public class ImageProcessing extends GraphicsApp {
     public void draw() {
         drawBackground(BACKGROUND_COLOR);
 
-        imageSopranos = flipImageHorizontal(imageSopranos);
-        imageSopranos = blurImage(imageSopranos);
+        //image = flipImageHorizontal(image);
+        image = blurImage(image);
 
-        imageSopranos.draw();
+        image.draw();
     }
 
     private void setupCanvas(int width, int height) {
@@ -46,7 +45,8 @@ public class ImageProcessing extends GraphicsApp {
     }
 
     private void setupImages() {
-        imageSopranos = new Image(0, 0, "data/assets/sopranos.jpg");
+        //image = new Image(0, 0, "data/assets/sopranos.jpg");
+        image = new Image(0, 0, "data/assets/the_office_orig.png");
     }
 
     private Image flipImageHorizontal(Image img) {
